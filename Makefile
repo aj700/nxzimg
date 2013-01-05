@@ -351,14 +351,10 @@ CC		= $(srctree)/scripts/gcc-wrapper.py $(REAL_CC)
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-CFLAGS_MODULE   = -march=armv7-a -mtune=cortex-a15 -mfpu=neon-vfpv4 -funsafe-math-optimizations \
-                   -ftree-vectorize -pipe -fno-delete-null-pointer-checks -finline-functions \
-		   -funswitch-loops -fpredictive-commoning -fgcse-after-reload -ftree-vectorize -pipe 
+CFLAGS_MODULE   = -O2
 AFLAGS_MODULE   =
 LDFLAGS_MODULE  =
-CFLAGS_KERNEL	=  -march=armv7-a -mtune=cortex-a15 -mfpu=neon-vfpv4 -funsafe-math-optimizations \
-                   -ftree-vectorize -pipe -fno-delete-null-pointer-checks -finline-functions \
-		   -funswitch-loops -fpredictive-commoning -fgcse-after-reload -ftree-vectorize -pipe 
+CFLAGS_KERNEL	= -O2
 AFLAGS_KERNEL	=
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
@@ -376,11 +372,10 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
-		   -march=armv7-a -mtune=cortex-a15 -mfpu=neon-vfpv4 -funsafe-math-optimizations \
-		   -fno-delete-null-pointer-checks -finline-functions \
+		   -fno-delete-null-pointer-checks \
 		   -funswitch-loops -fpredictive-commoning -fgcse-after-reload \
-		   -ftree-vectorize -pipe 
-#		   -floop-interchange -floop-strip-mine -floop-block
+		   -ftree-vectorize -pipe \
+		   -floop-interchange -floop-strip-mine -floop-block
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
